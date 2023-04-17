@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method='POST', action='/medicine/add')
+        #form-group
+            label Medicine Name
+            input.form-control(name='medicine', type='text')
+        #form-group
+            label Doctor Name
+            input.form-control(name='doctorname', type='text')
+        #form-group
+            label Discription
+            textarea.form-control(name='discription')
+        input.btn.btn-primary(type='submit', value='submit')

@@ -1,0 +1,8 @@
+extend layout
+
+block content
+    h1= medicine.medicine
+    h5 Priscribed by #{medicine.doctorname}
+    p= medicine.discription
+    hr
+    a.btn.btn-default(href='/medicine/edit/'+medicine._id) Edit
