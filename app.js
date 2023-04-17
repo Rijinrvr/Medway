@@ -66,12 +66,13 @@ app.post('/medicine/add', function(req, res){
 });
 
 app.get('/medicine/:id', function(req, res){
- Medway.findById(req.params.id, function(err, medicines){
+    Medway.findById(req.params.id, function (err, medicine) {
+     
         res.render('article', {
-            medicines: medicines
+            medicine: medicine
         });
     });
 });
 
 
-app.listen(2001);
+app.listen(2002);
