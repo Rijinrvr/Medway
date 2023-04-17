@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 #{title}
+    form(method='POST', action='/articles/edit/'+medicine._id)
+        #form-group
+            label Title
+            input.form-control(name='Medicine Name', type='text', value=medicine.medicine)
+        #form-group
+            label Author
+            input.form-control(name='Doctor Name', type='text', value=medicine.doctorname)
+        #form-group
+            label Body
+            textarea.form-control(name='Discription')= value=medicine.discription
+
+        input.btn.btn-primary(type='submit', value='submit')

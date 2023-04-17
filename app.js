@@ -73,6 +73,30 @@ app.get('/medicine/:id', function(req, res){
         });
     });
 });
+app.get('/medicine/edit/:id', function(req, res){
+    Medway.findById(req.params.id, function(err, medicine){
+        res.render('edit',{
+            title: "Edit",
+            medicine: medicine
+        })
+    })
+});
 
+app.post('/medicine/edit/:id', function(req, res){
+    let editmed = {};
+    editmed.title = req.body.medicine;
+    editmed.author = req.body.doctorname;
+    editmed.body = req.body.discription;
+
+    let query = {_id:req.params.id}
+    Medway.update (query, medicine, function(err){
+        if(err) {
+            console.log(err);
+            return;
+        } else {
+            res.redirect('/');
+        }
+    });
+});
 
 app.listen(2002);
