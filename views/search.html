@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>search</h1>
+    <input type="text" id="search-box" onkeyup="sendData(this)">
+    <section id="searchResults"></section>
+    <script>
+
+        function sendData(e) {
+            const searchResults = document.getElementById('searchResults')
+            fetch('getArticles', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ payload: e.value })
+            }).then(res => res.json()).then(data => {
+                let payload = data.payload;
+                searchResults.innerHTML = '';
+                if (payload.length < 1) {
+                    searchResults.innerHTML = '<p>Sorry nothing found</p>';
+                    return;
+                }
+                payload.forEach((item, index) => {
+                    if (index > 0) searchResults.innerHTML += '<hr>';
+                    searchResults.innerHTML += `<p>${item.title}</p>`
+                })
+                return;
+            })
+        }
+    </script>
+</body>
+
+</html>

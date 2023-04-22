@@ -1,0 +1,31 @@
+doctype html
+html
+    head
+        title Medway
+        link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+        link(href='/css/style.css', type="text/css")
+    body
+        .container
+            br
+            br
+            br
+            != messages('message', locals)
+            if errors
+                each error in errors
+                    div(class='alert alert-danger') #{error.msg}
+            h1 Log In
+            form(method='POST', action='/user/login')
+                #form-group
+                    label Username
+                    input.form-control(name='username', type='text')
+                #form-group
+                    label Password
+                    input.form-control(name='password', type='password')
+                br
+                br
+                input.btn.btn-primary(type='submit', value='Sign In')
+                <hr>
+            p Don't have an account yet? 
+                a(href='/user/signup') Sign up here.
+        script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+        script(src='/bootstrap/js/bootstrap.js')

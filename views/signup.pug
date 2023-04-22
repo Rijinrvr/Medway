@@ -1,0 +1,33 @@
+//- extends layout
+doctype html
+html
+  head
+    title Medway
+    link(rel='stylesheet' href='/bootstrap/css/bootstrap.min.css')
+    link(href='/css/style.css' type="text/css")
+  body
+    .container
+      h1 Sign Up
+
+      form(action='/signup' method='POST')
+        .form-group
+          label(for='username') Username
+          input#username.form-control(type='text' name='username', required)
+
+        .form-group
+          label(for='email') Email
+          input#email.form-control(type='email' name='email', required)
+
+        .form-group
+          label(for='password') Password
+          input#password.form-control(type='password' name='password', required)
+
+        .form-group
+          label(for='confirm_password') Confirm Password
+          input#confirm-password.form-control(type='password' name='confirm_password', required)
+
+        button.btn.btn-primary(type='submit') Sign Up
+
+      script(src='https://code.jquery.com/jquery-3.5.1.min.js')
+      script(src='/bootstrap/js/bootstrap.js')
+

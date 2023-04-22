@@ -6,3 +6,7 @@ block content
     p= medicine.discription
     hr
     a.btn.btn-default(href='/medicine/edit/'+medicine._id) Edit
+    a.btn.btn-danger#delete-medicine(href='#', dataid=medicine._id) Delete
+
+    script(src='/js/main.js')   
+    
